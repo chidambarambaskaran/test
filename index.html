@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇷🇺 Russian Vocabulary</title>
+<style>
+/* ===== CSS Reset & Variables ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --bg-card: #1a1d27;
+  --bg-card-hover: #222633;
+  --bg-input: #141720;
+  --border: #2a2e3d;
+  --border-focus: #5b8def;
+  --text: #e8eaf0;
+  --text-muted: #8b90a0;
+  --text-dim: #5a5f73;
+  --accent: #5b8def;
+  --accent-hover: #7aa4ff;
+  --accent-glow: rgba(91, 141, 239, 0.15);
+  --red: #ef5b5b;
+  --red-hover: #ff7a7a;
+  --red-glow: rgba(239, 91, 91, 0.15);
+  --gold: #f5c542;
+  --gold-dim: #5a5030;
+  --green: #5bef8f;
+  --green-glow: rgba(91, 239, 143, 0.1);
+  --russian-blue: #0039a6;
+  --russian-red: #d52b1e;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+  --transition: 0.2s ease;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+}
+
+html { font-size: 16px; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(135deg, #141825 0%, #1a1d27 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header-title .flag {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.header-title h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-title p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: -2px;
+}
+.header-stats {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg);
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+}
+.stat-pill .stat-value {
+  font-weight: 700;
+  color: var(--accent);
+}
+.stat-pill .stat-label {
+  color: var(--text-muted);
+}
+
+/* ===== Search Bar ===== */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+}
+.search-container svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-family: var(--font);
+  transition: var(--transition);
+  outline: none;
+}
+.search-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.search-input::placeholder { color: var(--text-dim); }
+
+/* ===== Main Layout ===== */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 4rem;
+}
+
+/* ===== Day Tabs ===== */
+.days-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.day-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  min-width: 80px;
+  user-select: none;
+}
+.day-tab:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--text-dim);
+}
+.day-tab.active {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+.day-tab .day-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.day-tab.active .day-name { color: var(--accent); }
+.day-tab .day-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+.day-tab .day-delete-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+}
+.day-tab:hover .day-delete-btn { display: flex; }
+
+.add-day-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font);
+  white-space: nowrap;
+}
+.add-day-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ===== Day Header ===== */
+.day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.day-header-left h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.day-header-left .day-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.day-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn-outline:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-card);
+}
+.btn-danger {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--red);
+}
+.btn-danger:hover {
+  background: var(--red-glow);
+  border-color: var(--red);
+}
+.btn-fav {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.2rem;
+  transition: var(--transition);
+  filter: grayscale(0.5);
+}
+.btn-fav:hover, .btn-fav.active { filter: grayscale(0); transform: scale(1.15); }
+
+/* ===== Vocabulary Table (Desktop) ===== */
+.vocab-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.vocab-table thead th {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 2;
+}
+.vocab-table tbody tr {
+  transition: var(--transition);
+}
+.vocab-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+.vocab-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+.vocab-table .col-russian {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+.vocab-table .col-pron {
+  color: var(--text-muted);
+  font-style: italic;
+}
+.vocab-table .col-meaning {
+  color: var(--text);
+}
+.vocab-table .col-actions {
+  white-space: nowrap;
+  text-align: right;
+}
+.col-actions-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+/* ===== Icon Buttons ===== */
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+.icon-btn:hover { background: var(--bg-card); color: var(--text); }
+.icon-btn.play-btn:hover { color: var(--green); background: var(--green-glow); }
+.icon-btn.edit-btn:hover { color: var(--accent); background: var(--accent-glow); }
+.icon-btn.delete-btn:hover { color: var(--red); background: var(--red-glow); }
+
+/* ===== Card View (Mobile) ===== */
+.vocab-cards { display: none; }
+.vocab-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  margin-bottom: 0.6rem;
+  transition: var(--transition);
+}
+.vocab-card:hover { border-color: var(--text-dim); }
+.vocab-card .card-russian {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.vocab-card .card-pron {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.vocab-card .card-meaning {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-top: 0.35rem;
+}
+.vocab-card .card-actions {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.65rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ===== Modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.25s;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.modal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.modal-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.modal-close:hover { background: var(--bg); color: var(--text); }
+.modal-body { padding: 1.25rem; }
+.modal-footer {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ===== Form Fields ===== */
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+}
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: var(--font);
+  transition: var(--transition);
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 0.75rem; opacity: 0.5; }
+.empty-state h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text); }
+.empty-state p { font-size: 0.85rem; max-width: 340px; margin: 0 auto; }
+
+/* ===== Favorites Filter ===== */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.filter-chip {
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font);
+}
+.filter-chip:hover { border-color: var(--text-dim); color: var(--text); }
+.filter-chip.active {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ===== Toast Notification ===== */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.toast {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1.1rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: toastIn 0.3s ease;
+  max-width: 340px;
+}
+.toast.success { border-left: 3px solid var(--green); }
+.toast.error { border-left: 3px solid var(--red); }
+.toast.info { border-left: 3px solid var(--accent); }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Confirm Dialog ===== */
+.confirm-text { font-size: 0.92rem; line-height: 1.6; }
+.confirm-text strong { color: var(--red); }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header { padding: 1rem; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .header-stats { width: 100%; flex-wrap: wrap; }
+  .search-container { max-width: 100%; }
+  .main { padding: 1rem; }
+  .day-header { flex-direction: column; align-items: flex-start; }
+  .day-actions { width: 100%; }
+  .day-actions .btn { flex: 1; justify-content: center; }
+  .vocab-table-wrap { display: none; }
+  .vocab-cards { display: block; }
+}
+@media (max-width: 480px) {
+  .header-title h1 { font-size: 1.2rem; }
+  .days-bar { gap: 0.35rem; }
+  .day-tab { min-width: 65px; padding: 0.5rem 0.8rem; }
+  .day-tab .day-name { font-size: 0.78rem; }
+}
+
+/* ===== Table Wrapper ===== */
+.vocab-table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ===== Edit inline row ===== */
+.edit-input {
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-focus);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-family: var(--font);
+  outline: none;
+}
+
+/* ===== Decoration stripe ===== */
+.stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--russian-blue) 0%, var(--russian-blue) 33%, #fff 33%, #fff 66%, var(--russian-red) 66%, var(--russian-red) 100%);
+  opacity: 0.6;
+}
+
+/* ===== Loading Overlay ===== */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.loading-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-overlay .loading-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.loading-overlay .loading-sub {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: -0.8rem;
+}
+</style>
+</head>
+<body>
+
+<!-- Russian flag stripe decoration -->
+<div class="stripe"></div>
+
+<!-- ===== LOADING OVERLAY ===== -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Loading vocabulary…</div>
+  <div class="loading-sub">Connecting to server</div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-title">
+      <span class="flag">🇷🇺</span>
+      <div>
+        <h1>Russian Vocabulary</h1>
+        <p>My Russian Learning Journey</p>
+      </div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-pill">
+        <span class="stat-value" id="totalWords">0</span>
+        <span class="stat-label">words</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-value" id="totalDays">0</span>
+        <span class="stat-label">days</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-value" id="totalFavs">0</span>
+        <span class="stat-label">★</span>
+      </div>
+    </div>
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search words, meanings, pronunciation…">
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+  <!-- Day Tabs -->
+  <div class="days-bar" id="daysBar"></div>
+
+  <!-- Day Content -->
+  <div id="dayContent"></div>
+</main>
+
+<!-- ===== TOAST CONTAINER ===== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ===== ADD WORD MODAL ===== -->
+<div class="modal-overlay" id="addWordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>➕ Add Word</h3>
+      <button class="modal-close" onclick="closeModal('addWordModal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Russian (Cyrillic)</label>
+        <input type="text" class="form-input" id="addRussian" placeholder="e.g. Спасибо">
+      </div>
+      <div class="form-group">
+        <label>Pronunciation</label>
+        <input type="text" class="form-input" id="addPronunciation" placeholder="e.g. Spasibo">
+      </div>
+      <div class="form-group">
+        <label>English Meaning</label>
+        <input type="text" class="form-input" id="addMeaning" placeholder="e.g. Thank you">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('addWordModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="addSingleWord()">Add Word</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== IMPORT MODAL ===== -->
+<div class="modal-overlay" id="importModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📋 Add Words</h3>
+      <button class="modal-close" onclick="closeModal('importModal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Paste your vocabulary list</label>
+        <textarea class="form-textarea" id="importText" placeholder="1. Привет — Privet — Hi / Hello
+2. Спасибо — Spasibo — Thank you
+3. Друг — Drug — Male friend"></textarea>
+      </div>
+      <p style="font-size:0.78rem; color:var(--text-dim); margin-top:-0.5rem;">
+        Format: <code style="color:var(--text-muted);">Russian — Pronunciation — Meaning</code><br>
+        Numbering (1. 2. 3.) is automatically removed. Separators: <code style="color:var(--text-muted);">—</code> <code style="color:var(--text-muted);">-</code> <code style="color:var(--text-muted);">|</code>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('importModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="importVocabulary()">Add Words</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONFIRM MODAL ===== -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="confirmTitle">Confirm</h3>
+      <button class="modal-close" onclick="closeModal('confirmModal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="confirm-text" id="confirmText"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('confirmModal')">Cancel</button>
+      <button class="btn btn-danger" id="confirmBtn" onclick="">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EDIT WORD MODAL ===== -->
+<div class="modal-overlay" id="editWordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>✏️ Edit Word</h3>
+      <button class="modal-close" onclick="closeModal('editWordModal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Russian (Cyrillic)</label>
+        <input type="text" class="form-input" id="editRussian">
+      </div>
+      <div class="form-group">
+        <label>Pronunciation</label>
+        <input type="text" class="form-input" id="editPronunciation">
+      </div>
+      <div class="form-group">
+        <label>English Meaning</label>
+        <input type="text" class="form-input" id="editMeaning">
+      </div>
+      <input type="hidden" id="editWordId">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('editWordModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEditedWord()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   CONFIGURATION
+   Change API_BASE_URL to your Render backend URL for production.
+   ================================================================ */
+const API_BASE_URL = "http://localhost:3000";
+
+/* ================================================================
+   API LAYER — All communication with the backend
+   ================================================================ */
+const API = {
+  async _request(method, path, body = null) {
+    const opts = {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+    };
+    if (body) opts.body = JSON.stringify(body);
+    try {
+      const res = await fetch(`${API_BASE_URL}${path}`, opts);
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: res.statusText }));
+        throw new Error(err.error || `Request failed (${res.status})`);
+      }
+      return res.json();
+    } catch (err) {
+      if (err.message === 'Failed to fetch' || err.name === 'TypeError') {
+        throw new Error('Unable to connect to server');
+      }
+      throw err;
+    }
+  },
+
+  // Days
+  getDays()              { return this._request('GET', '/api/days'); },
+  createDay(data)        { return this._request('POST', '/api/days', data); },
+  deleteDay(id)          { return this._request('DELETE', `/api/days/${id}`); },
+
+  // Words
+  addWord(dayId, word)        { return this._request('POST', `/api/days/${dayId}/words`, word); },
+  addWordsBulk(dayId, words)  { return this._request('POST', `/api/days/${dayId}/words/bulk`, { words }); },
+  updateWord(wordId, data)    { return this._request('PUT', `/api/words/${wordId}`, data); },
+  deleteWord(wordId)          { return this._request('DELETE', `/api/words/${wordId}`); },
+  toggleFavorite(wordId, fav) { return this._request('PATCH', `/api/words/${wordId}/favorite`, { favorite: fav }); },
+
+  // Health
+  health() { return this._request('GET', '/api/health'); },
+};
+
+/* ================================================================
+   APP STATE
+   ================================================================ */
+let state = { days: [], activeDayId: null };
+
+function getActiveDay() {
+  return state.days.find(d => d._id === state.activeDayId) || null;
+}
+
+/* ================================================================
+   LOADING OVERLAY
+   ================================================================ */
+function showLoading(msg = 'Loading vocabulary…', sub = 'Connecting to server') {
+  const el = document.getElementById('loadingOverlay');
+  el.querySelector('.loading-text').textContent = msg;
+  el.querySelector('.loading-sub').textContent = sub;
+  el.classList.remove('hidden');
+}
+function hideLoading() {
+  document.getElementById('loadingOverlay').classList.add('hidden');
+}
+
+/* ================================================================
+   LOAD DATA FROM BACKEND
+   ================================================================ */
+async function loadDays() {
+  try {
+    const days = await API.getDays();
+    state.days = days;
+    // Restore active day or pick first
+    if (state.activeDayId && !state.days.find(d => d._id === state.activeDayId)) {
+      state.activeDayId = state.days.length ? state.days[0]._id : null;
+    }
+    if (!state.activeDayId && state.days.length) {
+      state.activeDayId = state.days[0]._id;
+    }
+    render();
+  } catch (err) {
+    toast(err.message, 'error');
+  }
+}
+
+/* ================================================================
+   DAY OPERATIONS
+   ================================================================ */
+async function addDay() {
+  try {
+    const dayNumber = state.days.length ? Math.max(...state.days.map(d => d.dayNumber)) + 1 : 1;
+    const day = await API.createDay({ title: `Day ${dayNumber}`, dayNumber });
+    state.days.push(day);
+    state.activeDayId = day._id;
+    render();
+    toast(`${day.title} created`, 'success');
+  } catch (err) {
+    toast(err.message, 'error');
+  }
+}
+
+function selectDay(dayId) {
+  state.activeDayId = dayId;
+  render();
+}
+
+function deleteDay(dayId) {
+  const day = state.days.find(d => d._id === dayId);
+  if (!day) return;
+  showConfirm(
+    'Delete Day',
+    `Are you sure you want to delete <strong>${day.title}</strong> and all its <strong>${day.words.length} word(s)</strong>? This cannot be undone.`,
+    async () => {
+      try {
+        await API.deleteDay(dayId);
+        state.days = state.days.filter(d => d._id !== dayId);
+        if (state.activeDayId === dayId) {
+          state.activeDayId = state.days.length ? state.days[state.days.length - 1]._id : null;
+        }
+        render();
+        toast(`${day.title} deleted`, 'info');
+      } catch (err) {
+        toast(err.message, 'error');
+      }
+    }
+  );
+}
+
+/* ================================================================
+   WORD OPERATIONS
+   ================================================================ */
+async function addWordToDay(russian, pronunciation, meaning) {
+  const day = getActiveDay();
+  if (!day) return null;
+  try {
+    const updatedDay = await API.addWord(day._id, {
+      russian: russian.trim(),
+      pronunciation: pronunciation.trim(),
+      meaning: meaning.trim()
+    });
+    // Replace the day in state with the updated version from server
+    const idx = state.days.findIndex(d => d._id === day._id);
+    if (idx !== -1) state.days[idx] = updatedDay;
+    return updatedDay;
+  } catch (err) {
+    toast(err.message, 'error');
+    return null;
+  }
+}
+
+function deleteWord(wordId) {
+  const day = getActiveDay();
+  if (!day) return;
+  const word = day.words.find(w => w._id === wordId);
+  if (!word) return;
+  showConfirm(
+    'Delete Word',
+    `Delete <strong>${word.russian}</strong> (${word.meaning})?`,
+    async () => {
+      try {
+        const updatedDay = await API.deleteWord(wordId);
+        const idx = state.days.findIndex(d => d._id === updatedDay._id);
+        if (idx !== -1) state.days[idx] = updatedDay;
+        render();
+        toast('Word deleted', 'info');
+      } catch (err) {
+        toast(err.message, 'error');
+      }
+    }
+  );
+}
+
+async function toggleFavorite(wordId) {
+  const day = getActiveDay();
+  if (!day) return;
+  const word = day.words.find(w => w._id === wordId);
+  if (!word) return;
+  try {
+    const updatedDay = await API.toggleFavorite(wordId, !word.favorite);
+    const idx = state.days.findIndex(d => d._id === updatedDay._id);
+    if (idx !== -1) state.days[idx] = updatedDay;
+    render();
+  } catch (err) {
+    toast(err.message, 'error');
+  }
+}
+
+function openEditModal(wordId) {
+  const day = getActiveDay();
+  if (!day) return;
+  const word = day.words.find(w => w._id === wordId);
+  if (!word) return;
+  document.getElementById('editRussian').value = word.russian;
+  document.getElementById('editPronunciation').value = word.pronunciation;
+  document.getElementById('editMeaning').value = word.meaning;
+  document.getElementById('editWordId').value = wordId;
+  openModal('editWordModal');
+}
+
+async function saveEditedWord() {
+  const wordId = document.getElementById('editWordId').value;
+  const russian = document.getElementById('editRussian').value.trim();
+  const pronunciation = document.getElementById('editPronunciation').value.trim();
+  const meaning = document.getElementById('editMeaning').value.trim();
+  if (!russian || !meaning) { toast('Russian word and meaning are required', 'error'); return; }
+  try {
+    const updatedDay = await API.updateWord(wordId, { russian, pronunciation, meaning });
+    const idx = state.days.findIndex(d => d._id === updatedDay._id);
+    if (idx !== -1) state.days[idx] = updatedDay;
+    closeModal('editWordModal');
+    render();
+    toast('Word updated', 'success');
+  } catch (err) {
+    toast(err.message, 'error');
+  }
+}
+
+/* ================================================================
+   BULK IMPORT PARSER
+   ================================================================ */
+function parseVocabLine(line) {
+  // Remove leading numbering like "1." "2)" "10."
+  let cleaned = line.replace(/^\s*\d+[\.\)\-]\s*/, '').trim();
+  if (!cleaned) return null;
+
+  // Try different separators: — (em dash), – (en dash), |
+  const separators = [/\s*—\s*/, /\s*–\s*/, /\s*\|\s*/];
+
+  for (const sep of separators) {
+    const parts = cleaned.split(sep);
+    if (parts.length >= 3) {
+      return {
+        russian: parts[0].trim(),
+        pronunciation: parts[1].trim(),
+        meaning: parts.slice(2).join(' — ').trim()
+      };
+    }
+  }
+
+  // Fallback: try splitting by " - " (hyphen with spaces)
+  const hyphenParts = cleaned.split(/\s+-\s+/);
+  if (hyphenParts.length >= 3) {
+    return {
+      russian: hyphenParts[0].trim(),
+      pronunciation: hyphenParts[1].trim(),
+      meaning: hyphenParts.slice(2).join(' - ').trim()
+    };
+  }
+
+  return null;
+}
+
+async function importVocabulary() {
+  const text = document.getElementById('importText').value;
+  if (!text.trim()) { toast('Please paste some vocabulary', 'error'); return; }
+
+  const day = getActiveDay();
+  if (!day) { toast('Please select or create a day first', 'error'); return; }
+
+  const lines = text.split('\n').filter(l => l.trim());
+  const parsedWords = [];
+  let failed = 0;
+
+  for (const line of lines) {
+    const parsed = parseVocabLine(line);
+    if (parsed && parsed.russian) {
+      parsedWords.push(parsed);
+    } else {
+      failed++;
+    }
+  }
+
+  if (parsedWords.length === 0) {
+    toast('No words could be parsed. Check the format.', 'error');
+    return;
+  }
+
+  try {
+    const result = await API.addWordsBulk(day._id, parsedWords);
+    // result contains the updated day
+    const idx = state.days.findIndex(d => d._id === day._id);
+    if (idx !== -1) state.days[idx] = result.day || result;
+    closeModal('importModal');
+    document.getElementById('importText').value = '';
+    render();
+    const added = result.added || parsedWords.length;
+    toast(`Imported ${added} word${added > 1 ? 's' : ''}${failed > 0 ? ` (${failed} line${failed > 1 ? 's' : ''} skipped)` : ''}`, 'success');
+  } catch (err) {
+    toast(err.message, 'error');
+  }
+}
+
+async function addSingleWord() {
+  const russian = document.getElementById('addRussian').value.trim();
+  const pronunciation = document.getElementById('addPronunciation').value.trim();
+  const meaning = document.getElementById('addMeaning').value.trim();
+
+  if (!russian || !meaning) { toast('Russian word and meaning are required', 'error'); return; }
+
+  const day = getActiveDay();
+  if (!day) { toast('Please select or create a day first', 'error'); return; }
+
+  const result = await addWordToDay(russian, pronunciation, meaning);
+  if (result) {
+    closeModal('addWordModal');
+    document.getElementById('addRussian').value = '';
+    document.getElementById('addPronunciation').value = '';
+    document.getElementById('addMeaning').value = '';
+    render();
+    toast(`"${russian}" added to ${day.title}`, 'success');
+  }
+}
+
+/* ================================================================
+   AUDIO — Web Speech API
+   ================================================================ */
+function speak(russianWord) {
+  if (!('speechSynthesis' in window)) {
+    toast('Speech synthesis not supported in this browser', 'error');
+    return;
+  }
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(russianWord);
+  utterance.lang = 'ru-RU';
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+
+  const voices = window.speechSynthesis.getVoices();
+  const ruVoice = voices.find(v => v.lang.startsWith('ru'));
+  if (ruVoice) utterance.voice = ruVoice;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+// Pre-load voices
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {};
+  window.speechSynthesis.getVoices();
+}
+
+/* ================================================================
+   SEARCH
+   ================================================================ */
+let currentFilter = 'all'; // 'all' | 'favorites'
+
+function getFilteredWords(day) {
+  if (!day) return [];
+  let words = day.words;
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  if (query) {
+    words = words.filter(w =>
+      w.russian.toLowerCase().includes(query) ||
+      w.pronunciation.toLowerCase().includes(query) ||
+      w.meaning.toLowerCase().includes(query)
+    );
+  }
+
+  if (currentFilter === 'favorites') {
+    words = words.filter(w => w.favorite);
+  }
+
+  return words;
+}
+
+/* ================================================================
+   UI RENDERING
+   ================================================================ */
+function render() {
+  renderDayTabs();
+  renderDayContent();
+  renderStats();
+}
+
+function renderStats() {
+  const totalWords = state.days.reduce((sum, d) => sum + d.words.length, 0);
+  const totalFavs = state.days.reduce((sum, d) => sum + d.words.filter(w => w.favorite).length, 0);
+  document.getElementById('totalWords').textContent = totalWords;
+  document.getElementById('totalDays').textContent = state.days.length;
+  document.getElementById('totalFavs').textContent = totalFavs;
+}
+
+function renderDayTabs() {
+  const bar = document.getElementById('daysBar');
+  let html = '';
+
+  for (const day of state.days) {
+    const isActive = day._id === state.activeDayId;
+    html += `
+      <div class="day-tab ${isActive ? 'active' : ''}" onclick="selectDay('${day._id}')">
+        <button class="day-delete-btn" onclick="event.stopPropagation(); deleteDay('${day._id}')" title="Delete day">&times;</button>
+        <span class="day-name">${escHtml(day.title)}</span>
+        <span class="day-count">${day.words.length} word${day.words.length !== 1 ? 's' : ''}</span>
+      </div>
+    `;
+  }
+
+  html += `<button class="add-day-btn" onclick="addDay()">+ Add Day</button>`;
+  bar.innerHTML = html;
+}
+
+function renderDayContent() {
+  const container = document.getElementById('dayContent');
+  const day = getActiveDay();
+
+  if (!day) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📚</div>
+        <h3>Start Your Journey</h3>
+        <p>Click <strong>+ Add Day</strong> above to create your first learning day and begin adding vocabulary.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const words = getFilteredWords(day);
+  const createdDate = new Date(day.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+  let html = `
+    <div class="day-header">
+      <div class="day-header-left">
+        <h2>${escHtml(day.title)}</h2>
+        <div class="day-meta">${day.words.length} word${day.words.length !== 1 ? 's' : ''} learned · Created ${createdDate}</div>
+      </div>
+      <div class="day-actions">
+        <button class="btn btn-primary" onclick="openModal('addWordModal')">+ Add Word</button>
+        <button class="btn btn-outline" onclick="openModal('importModal')">📋 Add Words</button>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-chip ${currentFilter === 'all' ? 'active' : ''}" onclick="setFilter('all')">All (${day.words.length})</button>
+      <button class="filter-chip ${currentFilter === 'favorites' ? 'active' : ''}" onclick="setFilter('favorites')">★ Favorites (${day.words.filter(w=>w.favorite).length})</button>
+    </div>
+  `;
+
+  if (words.length === 0) {
+    const isSearching = document.getElementById('searchInput').value.trim();
+    html += `
+      <div class="empty-state">
+        <div class="empty-icon">${isSearching ? '🔍' : '📝'}</div>
+        <h3>${isSearching ? 'No Results' : 'No Words Yet'}</h3>
+        <p>${isSearching ? 'Try a different search term.' : 'Add words manually or use the Import feature to paste vocabulary.'}</p>
+      </div>
+    `;
+  } else {
+    // Desktop table
+    html += `<div class="vocab-table-wrap"><table class="vocab-table">
+      <thead><tr>
+        <th style="width:5%">#</th>
+        <th style="width:22%">Russian</th>
+        <th style="width:22%">Pronunciation</th>
+        <th style="width:30%">Meaning</th>
+        <th style="width:21%;text-align:right">Actions</th>
+      </tr></thead><tbody>`;
+
+    words.forEach((w, i) => {
+      html += `<tr>
+        <td style="color:var(--text-dim);font-size:0.78rem">${i + 1}</td>
+        <td class="col-russian">${escHtml(w.russian)}</td>
+        <td class="col-pron">${escHtml(w.pronunciation)}</td>
+        <td class="col-meaning">${escHtml(w.meaning)}</td>
+        <td class="col-actions">
+          <div class="col-actions-inner">
+            <button class="icon-btn play-btn" onclick="speak('${escAttr(w.russian)}')" title="Pronounce">🔊</button>
+            <button class="btn-fav ${w.favorite ? 'active' : ''}" onclick="toggleFavorite('${w._id}')" title="Favorite">${w.favorite ? '★' : '☆'}</button>
+            <button class="icon-btn edit-btn" onclick="openEditModal('${w._id}')" title="Edit">✏️</button>
+            <button class="icon-btn delete-btn" onclick="deleteWord('${w._id}')" title="Delete">🗑️</button>
+          </div>
+        </td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+
+    // Mobile cards
+    html += `<div class="vocab-cards">`;
+    words.forEach(w => {
+      html += `<div class="vocab-card">
+        <div class="card-russian">${escHtml(w.russian)}</div>
+        <div class="card-pron">${escHtml(w.pronunciation)}</div>
+        <div class="card-meaning">${escHtml(w.meaning)}</div>
+        <div class="card-actions">
+          <button class="icon-btn play-btn" onclick="speak('${escAttr(w.russian)}')" title="Pronounce">🔊</button>
+          <button class="btn-fav ${w.favorite ? 'active' : ''}" onclick="toggleFavorite('${w._id}')">${w.favorite ? '★' : '☆'}</button>
+          <button class="icon-btn edit-btn" onclick="openEditModal('${w._id}')" title="Edit">✏️</button>
+          <button class="icon-btn delete-btn" onclick="deleteWord('${w._id}')" title="Delete">🗑️</button>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  render();
+}
+
+/* ================================================================
+   MODAL HELPERS
+   ================================================================ */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  setTimeout(() => {
+    const firstInput = document.querySelector(`#${id} .form-input, #${id} .form-textarea`);
+    if (firstInput) firstInput.focus();
+  }, 100);
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+function showConfirm(title, text, onConfirm) {
+  document.getElementById('confirmTitle').textContent = title;
+  document.getElementById('confirmText').innerHTML = text;
+  const btn = document.getElementById('confirmBtn');
+  btn.onclick = () => { closeModal('confirmModal'); onConfirm(); };
+  openModal('confirmModal');
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
+});
+
+// Close modals on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+  }
+});
+
+/* ================================================================
+   TOAST NOTIFICATIONS
+   ================================================================ */
+function toast(message, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  const icons = { success: '✓', error: '✗', info: 'ℹ' };
+  el.innerHTML = `<span>${icons[type] || 'ℹ'}</span> ${escHtml(message)}`;
+  container.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; setTimeout(() => el.remove(), 300); }, 3000);
+}
+
+/* ================================================================
+   UTILITY
+   ================================================================ */
+function escHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function escAttr(str) {
+  return (str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+/* ================================================================
+   SEARCH EVENT
+   ================================================================ */
+document.getElementById('searchInput').addEventListener('input', () => {
+  render();
+});
+
+/* ================================================================
+   KEYBOARD SHORTCUTS for Import modal
+   ================================================================ */
+document.getElementById('importText').addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.key === 'Enter') {
+    importVocabulary();
+  }
+});
+
+/* Add word on Enter in add-word modal */
+['addRussian', 'addPronunciation', 'addMeaning'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') addSingleWord();
+  });
+});
+
+/* Edit word on Enter */
+['editRussian', 'editPronunciation', 'editMeaning'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') saveEditedWord();
+  });
+});
+
+/* ================================================================
+   INIT — Load data from backend
+   ================================================================ */
+(async function init() {
+  showLoading();
+  try {
+    await loadDays();
+    hideLoading();
+  } catch (err) {
+    hideLoading();
+    toast('Failed to load data from server. Check your connection.', 'error');
+    render();
+  }
+})();
+</script>
+</body>
+</html>
